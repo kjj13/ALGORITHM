@@ -1,3 +1,9 @@
+/**
+ * baekjoon 2156 : 포도주 시식
+ * DATE : 2021.04.09
+ * DP문제
+ */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
