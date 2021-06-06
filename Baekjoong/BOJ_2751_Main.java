@@ -1,63 +1,64 @@
-package com.company;
-
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class BOJ_2751_Main {
     static int list[];
     static int tmp[];
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        int n = sc.nextInt();
+        int n = Integer.parseInt(bf.readLine());
         list = new int[n];
-        tmp = new int [n];
+        tmp = new int[n];
 
         for(int i=0;i<n;i++){
-//            System.out.println(sc.nextInt());
-            list[i] = sc.nextInt();
+            list[i] = Integer.parseInt(bf.readLine());
         }
-        MergeSort(list,0,n-1);
+
+        Arrays.sort(list);
+
+//        MergeSSort(list,0,n-1);
+
         for (int i : list) {
             System.out.println(i);
         }
-
     }
 
-    private static void MergeSort(int[] list, int left, int right) {
+    public static void MergeSSort(int[] list,int left,int right){
         if(left < right){
-            int mid = (left + right) / 2;
-            MergeSort(list,left,mid);
-            MergeSort(list,mid+1,right);
-            Merge(list,left,mid,right);
+            int mid = (left + right) /2;
+            MergeSSort(list,left,mid);
+            MergeSSort(list,mid+1,right);
+            Merrgge(list, left, mid, right);
         }
     }
 
-    private static void Merge(int[] list, int left, int mid, int right) {
-        int l = left;
+    public static void Merrgge(int[] list, int left, int mid, int right){
+        int idx = left;
         int M = mid + 1;
-        int idx=left;
-        while(l<=mid && M <= right){
-            if(list[l] < list[M]){
-                tmp[idx++] = list[l++];
-            }
-            else{
+        int L = left;
+
+        while (L<=mid && M <= right){
+            if(list[L] < list[M]){
+                tmp[idx++] = list[L++];
+            }else{
                 tmp[idx++] = list[M++];
             }
         }
-//        if(l > mid){
-            while(M<=right){
-                tmp[idx++] = list[M++];
-            }
-//        }
-//        else{
-            while (l <= mid) {
-                tmp[idx++] = list[l++];
-            }
-//        }
 
+        while (L<=mid){
+            tmp[idx++] = list[L++];
+        }
+        while (M <= right){
+            tmp[idx++] = list[M++];
+        }
         for(int i=left;i<=right;i++){
             list[i] = tmp[i];
         }
+
     }
+
 }
