@@ -1,6 +1,9 @@
 #ALGORITHM/
 # ignore all .class files
 *.class
+*.iml
+*.md
+*.xml
 
 # exclude lib.class from "*.class", meaning all lib.class are still tracked
 !lib.class
