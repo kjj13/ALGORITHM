@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ALGORITHM.iml" filepath="$PROJECT_DIR$/ALGORITHM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Goorm/Goorm.iml" filepath="$PROJECT_DIR$/Goorm/Goorm.iml" />
       <module fileurl="file://$PROJECT_DIR$/Inflearn_BasicCoding/Inflearn_BasicCoding.iml" filepath="$PROJECT_DIR$/Inflearn_BasicCoding/Inflearn_BasicCoding.iml" />
       <module fileurl="file://$PROJECT_DIR$/basic/basic.iml" filepath="$PROJECT_DIR$/basic/basic.iml" />
     </modules>
