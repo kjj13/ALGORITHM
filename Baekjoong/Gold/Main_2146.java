@@ -1,5 +1,12 @@
 package Gold;
 
+/**
+ * 잘못된 풀이법.
+ *
+ * - 다리 만들기
+ *
+ */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -36,6 +43,7 @@ public class Main_2146 {
         }
         init(visit);
 
+        System.out.println();
     }
 
     private static void init(boolean[][] visit) {
@@ -44,15 +52,33 @@ public class Main_2146 {
         }
     }
 
-//    섬 체크하면서 Queue 배열 arround 채우기. -> 섬 주변 좌표.
+//    섬 체크하면서 Queue 배열 around 채우기. -> 섬 주변 좌표.
     private static void find_island(int i,int j) {
         Queue<Node> around0 = new LinkedList<>();    // around 큐 배열에 넣을 큐.
         Queue<Node> Q = new LinkedList<>();
         Q.add(new Node(i,j));
         visit[i][j] = true;
+        while (!Q.isEmpty()){
+            Node cur = Q.poll();
+            for(int dir=0;dir<4;dir++){
+                int nx = cur.x + dx[dir];
+                int ny = cur.y + dy[dir];
+                if(nx < 0 || nx >= map.length || ny < 0 || ny >= map[0].length) continue;
+                if(map[nx][ny] == 0){
+                    Node curr = new Node(nx,ny);
+                    if(!around0.contains(curr))
+                        around0.add(curr);
+                    continue;
+                }
+                if(visit[nx][ny])   continue;
+                Q.add(new Node(nx,ny));
+                visit[nx][ny] = true;
+            }
+        }
+        around.add(around0);
     }
 
-    private static class Node{
+    static class Node{
         int x;
         int y;
         int depth;
